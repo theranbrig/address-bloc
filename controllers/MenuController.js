@@ -58,4 +58,16 @@ module.exports = class menuController {
 		console.log(`Today is: ${moment().format('LL')}`);
 		this.main();
 	}
+
+	// Vanilla JS - Not used since the above syntax is much shorter and I wanted to be importing NPM modules for this assignment.
+
+	// getDate() {
+	// 	let currentDate = new Date();
+	// 	let day = currentDate.getDate();
+	// 	let month = currentDate.getMonth() + 1;
+	// 	let year = currentDate.getFullYear();
+	// 	this.clear();
+	// 	console.log(`Today is ${day}/${month}/${year}`);
+	// 	this.main();
+	// }
 };
