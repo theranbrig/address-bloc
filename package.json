@@ -9,6 +9,7 @@
 	"author": "Theran Brigowatz",
 	"license": "ISC",
 	"dependencies": {
-		"inquirer": "^5.1.0"
+		"inquirer": "^5.1.0",
+		"moment": "^2.22.2"
 	}
 }
