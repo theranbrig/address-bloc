@@ -11,6 +11,7 @@ module.exports = class menuController {
 				choices: ['Add new contact', "Get today's date", 'Exit']
 			}
 		];
+		this.contacts = [];
 	}
 
 	main() {
@@ -51,6 +52,10 @@ module.exports = class menuController {
 	exit() {
 		console.log('Thanks for using Address Bloc');
 		process.exit();
+	}
+
+	getContactCount() {
+		return this.contacts.length;
 	}
 
 	getDate() {
