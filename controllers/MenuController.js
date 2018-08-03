@@ -1,4 +1,5 @@
 const inquirer = require('inquirer');
+const moment = require('moment');
 
 module.exports = class menuController {
 	constructor() {
@@ -7,9 +8,10 @@ module.exports = class menuController {
 				type: 'list',
 				name: 'mainMenuChoice',
 				message: 'Please choose from an option below:',
-				choices: ['Add new contact', 'Exit']
+				choices: ['Add new contact', "Get today's date", 'Exit']
 			}
 		];
+		this.contacts = [];
 	}
 
 	main() {
@@ -23,6 +25,10 @@ module.exports = class menuController {
 						break;
 					case 'Exit':
 						this.exit();
+						break;
+					case "Get today's date":
+						this.getDate();
+						break;
 					default:
 						console.log('Invalid input');
 						break;
@@ -47,4 +53,26 @@ module.exports = class menuController {
 		console.log('Thanks for using Address Bloc');
 		process.exit();
 	}
+
+	getContactCount() {
+		return this.contacts.length;
+	}
+
+	getDate() {
+		this.clear();
+		console.log(`Today is: ${moment().format('LL')}`);
+		this.main();
+	}
+
+	// Vanilla JS - Not used since the above syntax is much shorter and I wanted to be importing NPM modules for this assignment.
+
+	// getDate() {
+	// 	let currentDate = new Date();
+	// 	let day = currentDate.getDate();
+	// 	let month = currentDate.getMonth() + 1;
+	// 	let year = currentDate.getFullYear();
+	// 	this.clear();
+	// 	console.log(`Today is ${day}/${month}/${year}`);
+	// 	this.main();
+	// }
 };
