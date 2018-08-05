@@ -28,11 +28,19 @@ module.exports = class ContactController {
 				validate(val) {
 					return val !== '';
 				}
+			},
+			{
+				type: 'input',
+				name: 'company',
+				message: "Contact's company - ",
+				validate(val) {
+					return val !== '';
+				}
 			}
 		];
 	}
 
-	addContact(name, phone, email) {
-		return Contact.create({ name, phone, email });
+	addContact(name, phone, email, company) {
+		return Contact.create({ name, phone, email, company });
 	}
 };
