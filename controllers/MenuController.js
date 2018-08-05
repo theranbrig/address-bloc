@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 const moment = require('moment');
+const ContactController = require('./ContactController');
 
 module.exports = class menuController {
 	constructor() {
@@ -11,7 +12,7 @@ module.exports = class menuController {
 				choices: ['Add new contact', "Get today's date", 'Remind Me', 'Exit']
 			}
 		];
-		this.contacts = [];
+		this.book = new ContactController();
 	}
 
 	main() {
@@ -48,8 +49,18 @@ module.exports = class menuController {
 
 	addContact() {
 		this.clear();
-		console.log('addContact called');
-		this.main();
+		inquirer.prompt(this.book.addContactQuestions).then(answers => {
+			this.book
+				.addContact(answers.name, answers.phone)
+				.then(contact => {
+					console.log('Contact added successfully!');
+					this.main();
+				})
+				.catch(err => {
+					console.log(err);
+					this.main();
+				});
+		});
 	}
 
 	exit() {
@@ -73,16 +84,4 @@ module.exports = class menuController {
 		console.log(`Today is: ${moment().format('LL')}`);
 		this.main();
 	}
-
-	// Vanilla JS - Not used since the above syntax is much shorter and I wanted to be importing NPM modules for this assignment.
-
-	// getDate() {
-	// 	let currentDate = new Date();
-	// 	let day = currentDate.getDate();
-	// 	let month = currentDate.getMonth() + 1;
-	// 	let year = currentDate.getFullYear();
-	// 	this.clear();
-	// 	console.log(`Today is ${day}/${month}/${year}`);
-	// 	this.main();
-	// }
 };
