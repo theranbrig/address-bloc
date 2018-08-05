@@ -267,24 +267,26 @@ describe('ContactController', () => {
 				this.book
 					.addContact(
 						'Rick Deckard',
-						'000-000-0000',
+						'000-000-000',
 						'null@null.com',
 						'unemployed'
 					)
-					.then(contacts => {
-						expect(contacts[0].name).toBe('Rick Deckard');
-						expect(contacts.length).toBe(1);
-						this.book.delete(contact.id).then(() => {
-							this.book
-								.getContacts()
-								.then(() => {
-									expect(contacts.length).toBe(0);
-									done();
-								})
-								.catch(err => {
-									console.log(err);
-									done();
-								});
+					.then(contact => {
+						this.book.getContacts().then(contacts => {
+							expect(contacts[0].name).toBe('Rick Deckard');
+							expect(contacts.length).toBe(1);
+							this.book.delete(contact.id).then(() => {
+								this.book
+									.getContacts()
+									.then(contacts => {
+										expect(contacts.length).toBe(0);
+										done();
+									})
+									.catch(err => {
+										console.log(err);
+										done();
+									});
+							});
 						});
 					});
 			});
