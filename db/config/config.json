@@ -1,15 +1,15 @@
 {
 	"development": {
-		"username": "theranbrigowatz",
+		"username": "postgres",
 		"password": null,
 		"database": "address-bloc-dev",
 		"host": "127.0.0.1",
 		"dialect": "postgres"
 	},
 	"test": {
-		"username": "theranbrigowatz",
+		"username": "postgres",
 		"password": null,
-		"database": "address-bloc-dev",
+		"database": "address-bloc-test",
 		"host": "127.0.0.1",
 		"dialect": "postgres"
 	}

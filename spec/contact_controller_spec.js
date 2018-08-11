@@ -38,7 +38,7 @@ describe('ContactController', () => {
 	// Get Contacts Tests
 
 	describe('#getContacts()', () => {
-		it('should return an empty array when no contacts are available', () => {
+		it('should return an empty array when no contacts are available', done => {
 			this.book
 				.getContacts()
 				.then(contacts => {
@@ -50,7 +50,7 @@ describe('ContactController', () => {
 					done();
 				});
 		});
-		it('should return an array of contacts when contacts are available', () => {
+		it('should return an array of contacts when contacts are available', done => {
 			this.book
 				.addContact('Alice', '001-101-1010', 'alice@mail.com', 'Google')
 				.then(() => {
